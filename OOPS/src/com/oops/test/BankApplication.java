@@ -77,34 +77,7 @@ public class BankApplication {
 
 
 
-      /*
-
-        //register customer
-        System.out.println("Enter your details...");
-        CustomerService customerService = new CustomerService();
-        customerService.openAccount();
-        System.out.println("Account is created please select below banking options");
-        System.out.println("1.showBalance 2.withdraw 3.deposit");
-
-        Scanner scanner = new Scanner(System.in);
-
-        int option = scanner.nextInt();
-        switch (option){
-
-            case 1: customerService.showBalance();
-                    break;
-            case 2: customerService.withdraw();
-                    break;
-            case 3: customerService.deposit();
-                    break;
-            default:
-                System.out.println("Invalid option");
-
-        }
-
-        scanner.close();
-*/
-
+    
 
     }
 
