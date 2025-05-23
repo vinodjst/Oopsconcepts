@@ -113,4 +113,11 @@ public class OrderService {
     }
 
 
+    void payment(){
+        //orderid
+        //order details
+        //show price
+        //payment success
+    }
+
 }
