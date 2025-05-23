@@ -19,6 +19,7 @@ public class OrderApp {
                     "4. View Orders\n" +
                     "5. Process order\n" +
                     "6. Undo Last Action\n" +
+                    "7. pay \n" +
                     "0. Exit \n");
             System.out.println("Choose :");
             int option = scanner.nextInt();
@@ -30,6 +31,7 @@ public class OrderApp {
                 case 4 -> orderService.viewOrder();
                 case 5 -> orderService.processOrder();
                 case 6 -> orderService.undoLastAction();
+                //case 7 -> orderService.payment();
                 case 0 -> {
                     System.out.println("Exiting......");
                     System.exit(0);
