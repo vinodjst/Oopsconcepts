@@ -17,7 +17,7 @@ public class OrderApp {
                     "2. View Products\n" +
                     "3. Place Order\n" +
                     "4. View Orders\n" +
-                    "5. View Customers\n" +
+                    "5. Process order\n" +
                     "6. Undo Last Action\n" +
                     "0. Exit \n");
             System.out.println("Choose :");
@@ -28,7 +28,7 @@ public class OrderApp {
                 case 2 -> orderService.viewProducts();
                 case 3 -> orderService.placeOrder();
                 case 4 -> orderService.viewOrder();
-                case 5 -> orderService.viewCustomer();
+                case 5 -> orderService.processOrder();
                 case 6 -> orderService.undoLastAction();
                 case 0 -> {
                     System.out.println("Exiting......");

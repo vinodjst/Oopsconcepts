@@ -7,10 +7,10 @@ public class OrderService {
 
     Map<Integer, Product> productsMap = new HashMap<>();
 
+    Stack<String> actionHistory = new Stack<>();
 
 
-    Map<String, String> order = new HashMap<>();
-
+    Queue<String> pendingOrders = new LinkedList<>();
 
     void dataSetup(){
 
@@ -64,34 +64,52 @@ public class OrderService {
         String name = scanner.next();
         scanner.nextLine();
         System.out.println("Please enter product Id :");
-        String productId = scanner.next();
+        int productId = scanner.nextInt();
 
-        String orderId = "#"+name+productId;
+        //check all the id's from the product map
+        if(productsMap.containsKey(productId)){
 
-        order.put(orderId,name+","+productId);
+            String orderId = "#"+name+productId;
 
-        System.out.println("Order Placed successfully");
+            pendingOrders.add(orderId);
+            actionHistory.push(orderId);
+
+            System.out.println("Order Placed successfully");
+        }else {
+            System.out.println("Product Id not found");
+        }
+
     }
 
     void viewOrder(){
 
-
-        Iterator<Map.Entry<String, String>> iterator = order.entrySet().iterator();
-
+        Iterator<String> iterator = actionHistory.iterator();
         while (iterator.hasNext()){
-
-            Map.Entry<String, String> orderMap = iterator.next();
-            System.out.println("Order Id :: "+orderMap.getKey()+"  Order Info(CustomerName,Product Id) ::"+orderMap.getValue());
+            System.out.println("Pending items :: "+iterator.next());
         }
+
     }
 
-    void viewCustomer(){
+    void processOrder(){
 
-        System.out.println("view customer");
+        String order = pendingOrders.peek();
+        pendingOrders.poll();
+        System.out.println("Order "+ order +" processed successfully.....");
+        Iterator<String> iterator = pendingOrders.iterator();
+        while (iterator.hasNext()){
+            System.out.println("Pending Orders :: "+iterator.next());
+        }
+
     }
 
     void undoLastAction(){
-        System.out.println("removed");
+        if (!actionHistory.isEmpty()) {
+            String lastAction = actionHistory.pop();
+
+            System.out.println("↩️ Undone: " + lastAction);
+        } else {
+            System.out.println("No actions to undo.");
+        }
     }
 
 
