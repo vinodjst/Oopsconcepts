@@ -69,7 +69,7 @@ public class OrderService {
         //check all the id's from the product map
         if(productsMap.containsKey(productId)){
 
-            String orderId = "#"+name+productId;
+            String orderId = "#-"+name+"-"+productId;
 
             pendingOrders.add(orderId);
             actionHistory.push(orderId);
@@ -118,6 +118,23 @@ public class OrderService {
         //order details
         //show price
         //payment success
+
+        //create a map where it can hold orderid and order details
+        //Map<String(order),Product(object)>
+        String order = "#Ramana102";
+        String[] orderBreak = order.split("-");
+
+        String productId =orderBreak[orderBreak.length-1];
+        System.out.println("Product id ::  "+productId);
+
+        //parse the string into integer
+        int prodId = Integer.parseInt(productId);
+
+        Product product = productsMap.get(prodId);
+        System.out.println("Payment for Product:: "+product.getProductName()+"  Price :: "+product.getProductPrice());
+        System.out.println("Payment successfull");
+
+
     }
 
 }
