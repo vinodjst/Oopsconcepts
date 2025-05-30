@@ -4,6 +4,7 @@ import java.util.*;
 
 public class OrderService {
 
+    Map<String, Product> orderDetailsMap = new HashMap<>();
 
     Map<Integer, Product> productsMap = new HashMap<>();
 
@@ -68,13 +69,20 @@ public class OrderService {
 
         //check all the id's from the product map
         if(productsMap.containsKey(productId)){
+            Product product = productsMap.get(productId);
 
-            String orderId = "#-"+name+"-"+productId;
+            //random order pattern using UUID
+            String orderId = "ORD" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
 
             pendingOrders.add(orderId);
             actionHistory.push(orderId);
+            orderDetailsMap.put(orderId, product);
 
             System.out.println("Order Placed successfully");
+            System.out.println("Order ID   : " + orderId);
+            System.out.println("Customer   : " + name);
+            System.out.println("Product    : " + product.getProductName());
+            System.out.println("Price      : ₹" + product.getProductPrice());
         }else {
             System.out.println("Product Id not found");
         }

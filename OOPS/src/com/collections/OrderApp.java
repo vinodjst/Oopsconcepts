@@ -31,7 +31,7 @@ public class OrderApp {
                 case 4 -> orderService.viewOrder();
                 case 5 -> orderService.processOrder();
                 case 6 -> orderService.undoLastAction();
-                case 7 -> orderService.payment();
+                case 7 -> orderService.3payment();
                 //Discount coupons
                 //Before placing the order
                 case 0 -> {
